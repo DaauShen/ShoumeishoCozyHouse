@@ -15,7 +15,7 @@ export default function WikiCredit() {
       icon={<Palette className="text-primary animate-bounce" />}
       title="Thông tin thiết kế"
       titleLang="vi"
-      className="mt-4 max-w-2xl mx-auto"
+      className="mt-6"
     >
       <Accordion
         type="single"

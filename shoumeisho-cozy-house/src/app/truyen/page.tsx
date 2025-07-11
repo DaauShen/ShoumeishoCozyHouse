@@ -4,6 +4,14 @@ import { cn } from '@/lib/utils'
 import { Cat } from 'lucide-react'
 import Link from 'next/link'
 
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Đọc truyện',
+  description: 'Đọc truyện',
+}
+
+
 export default function NotFound() {
   return (
     <main className="min-h-screen flex items-center justify-center p-4 bg-transparent">

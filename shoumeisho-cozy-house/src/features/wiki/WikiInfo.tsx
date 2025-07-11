@@ -40,8 +40,8 @@ export default function WikiInfo() {
           <li>
             <strong>• Tên ngắn gọn:</strong> ShouMiku (<span className="font-jp">しょうみく</span>)
           </li>
-          <li><strong>• Loại:</strong> Fanloid</li>
-          <li><strong>• Giọng:</strong> Hatsune Miku V4X</li>
+          <li><strong>• Loại:</strong> Fanloid, UTAU</li>
+          <li><strong>• Giọng:</strong> <i>Coming soon...</i></li>
           <li>
             <strong>• Tuổi:</strong>
             <ul className="pl-6 mt-1 space-y-1 text-sm">

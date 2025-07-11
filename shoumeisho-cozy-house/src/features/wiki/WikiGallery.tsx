@@ -69,64 +69,63 @@ export default function WikiGalleryGrid() {
 
   return (
     <NoCopyWrapper>
-      <div className="max-w-6xl w-full mx-auto px-4 py-6">
         <CuteCard
           icon={<ImageIcon className="text-primary animate-wiggle-slight" />}
           title="Bộ sưu tập minh hoạ"
           titleLang="vi"
+          className="mt-6" // ← Cập nhật ở đây
         >
           <p className="text-sm text-gray-600 mb-4 text-justify">
             Đây là các art minh hoạ chính thức và fanart cho Shoumeisho Miku. Click vào ảnh để zoom~
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  {images.map((img, idx) => (
-    <Dialog key={idx} onOpenChange={(open) => setSelectedImage(open ? img : null)}>
-      <DialogTrigger asChild>
-        <div className="flex flex-col cursor-zoom-in group">
-          {/* Ảnh với border riêng */}
-          <div
-            className="relative w-full overflow-hidden rounded-xl border-[3px] border-primary shadow-md group-hover:shadow-lg transition-all"
-            style={{ aspectRatio: `${img.width} / ${img.height}` }}
-          >
-            <Image
-              src={img.src}
-              alt={img.caption}
-              fill
-              loading="lazy"
-              className="object-cover transition-transform group-hover:scale-[1.02]"
-            />
-          </div>
+            {images.map((img, idx) => (
+              <Dialog key={idx} onOpenChange={(open) => setSelectedImage(open ? img : null)}>
+                <DialogTrigger asChild>
+                  <div className="flex flex-col cursor-zoom-in group">
+                    {/* Ảnh với border riêng */}
+                    <div
+                      className="relative w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-all"
+                      style={{ aspectRatio: `${img.width} / ${img.height}` }}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.caption}
+                        fill
+                        loading="lazy"
+                        className="object-cover transition-transform group-hover:scale-[1.02]"
+                      />
+                    </div>
 
-          {/* Caption riêng biệt, không có border */}
-          <div className="px-2 py-2 text-center text-sm text-gray-700 font-vi min-h-[48px] flex items-center justify-center">
-            {img.caption}
-          </div>
-        </div>
-      </DialogTrigger>
+                    {/* Caption riêng biệt, không có border */}
+                    <div className="px-2 py-2 text-center text-sm text-gray-700 font-vi min-h-[48px] flex items-center justify-center">
+                      {img.caption}
+                    </div>
+                  </div>
+                </DialogTrigger>
 
-      <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
-        <DialogTitle />
-        <div className="flex flex-col items-center gap-2">
-          <Image
-            src={img.src}
-            alt={img.caption}
-            width={img.width}
-            height={img.height}
-            loading="lazy"
-            className="rounded-xl object-contain max-h-[90vh] w-auto"
-            unoptimized
-          />
-        </div>
-      </DialogContent>
-    </Dialog>
-  ))}
-</div>
+                <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
+                  <DialogTitle />
+                  <div className="flex flex-col items-center gap-2">
+                    <Image
+                      src={img.src}
+                      alt={img.caption}
+                      width={img.width}
+                      height={img.height}
+                      loading="lazy"
+                      className="rounded-xl object-contain max-h-[90vh] w-auto"
+                      unoptimized
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
 
 
 
         </CuteCard>
-      </div>
     </NoCopyWrapper>
   )
 }

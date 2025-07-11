@@ -1,5 +1,3 @@
-'use client'
-
 import CuteTabs from '@/components/CuteTabs'
 import NoCopyWrapper from '@/components/NoCopyWrapper'
 
@@ -9,6 +7,14 @@ import WikiInfo from '@/features/wiki/WikiInfo'
 
 import { Sparkles } from 'lucide-react'
 import Image from 'next/image'
+
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Shoumeisho Miku - Wiki',
+  description: 'Tìm hiểu về Shoumeisho Miku',
+}
+
 
 export default function WikiPage() {
   return (
