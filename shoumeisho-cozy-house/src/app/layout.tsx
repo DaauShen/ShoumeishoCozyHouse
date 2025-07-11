@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar'
-import RouteLoader from '@/components/RouteLoader'
 import { AuthProvider } from '@/providers/AuthProvider'
 
 import { Toaster } from 'sonner'
@@ -26,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
             }}
           />
-          <RouteLoader />
           <Navbar />
           <main className="flex-1 p-4 pb-24">{children}</main>
         </AuthProvider>
