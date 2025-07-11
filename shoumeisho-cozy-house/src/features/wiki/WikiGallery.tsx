@@ -54,7 +54,7 @@ const images = [
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image12_ffa9ux.jpg',
     caption: '“Ngũ Hành” – Art by An Orange',
     width: 1440,
-    height: 1140,
+    height: 1440,
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image09_ql1rem.jpg',
@@ -80,42 +80,51 @@ export default function WikiGalleryGrid() {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {images.map((img, idx) => (
-              <Dialog key={idx} onOpenChange={(open) => setSelectedImage(open ? img : null)}>
-                <DialogTrigger asChild>
-                  <div className="cursor-zoom-in rounded-xl overflow-hidden bg-white border-[3px] border-primary shadow-md hover:shadow-lg transition-all">
-                    <Image
-                      src={img.src}
-                      alt={img.caption}
-                      width={img.width}
-                      height={img.height}
-                      loading="lazy"
-                      className="object-cover w-full h-[180px] sm:h-[220px] md:h-[240px] lg:h-[260px] transition-transform hover:scale-[1.02]"
-                    />
-                    <p className="text-sm text-center text-gray-700 px-2 py-2 font-vi">
-                      {img.caption}
-                    </p>
-                  </div>
-                </DialogTrigger>
-                <DialogContent
-                  className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden"
-                >
-                  <DialogTitle />
-                  <div className="flex flex-col items-center gap-2">
-                    <Image
-                      src={img.src}
-                      alt={img.caption}
-                      width={img.width}
-                      height={img.height}
-                      loading="lazy"
-                      className="rounded-xl object-contain max-h-[90vh] w-auto"
-                      unoptimized
-                    />
-                  </div>
-                </DialogContent>
-              </Dialog>
-            ))}
+  {images.map((img, idx) => (
+    <Dialog key={idx} onOpenChange={(open) => setSelectedImage(open ? img : null)}>
+      <DialogTrigger asChild>
+        <div className="flex flex-col cursor-zoom-in group">
+          {/* Ảnh với border riêng */}
+          <div
+            className="relative w-full overflow-hidden rounded-xl border-[3px] border-primary shadow-md group-hover:shadow-lg transition-all"
+            style={{ aspectRatio: `${img.width} / ${img.height}` }}
+          >
+            <Image
+              src={img.src}
+              alt={img.caption}
+              fill
+              loading="lazy"
+              className="object-cover transition-transform group-hover:scale-[1.02]"
+            />
           </div>
+
+          {/* Caption riêng biệt, không có border */}
+          <div className="px-2 py-2 text-center text-sm text-gray-700 font-vi min-h-[48px] flex items-center justify-center">
+            {img.caption}
+          </div>
+        </div>
+      </DialogTrigger>
+
+      <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
+        <DialogTitle />
+        <div className="flex flex-col items-center gap-2">
+          <Image
+            src={img.src}
+            alt={img.caption}
+            width={img.width}
+            height={img.height}
+            loading="lazy"
+            className="rounded-xl object-contain max-h-[90vh] w-auto"
+            unoptimized
+          />
+        </div>
+      </DialogContent>
+    </Dialog>
+  ))}
+</div>
+
+
+
         </CuteCard>
       </div>
     </NoCopyWrapper>

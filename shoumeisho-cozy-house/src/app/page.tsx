@@ -35,9 +35,6 @@ export default function HomePage() {
             Shoumeisho Cozy House
           </h1>
         </div>
-        <h2 className="text-2xl text-primary font-jp tracking-widest">
-          ショウメイショ・コージー・ハウス
-        </h2>
       </section>
 
       {/* Giới thiệu CCCD */}
