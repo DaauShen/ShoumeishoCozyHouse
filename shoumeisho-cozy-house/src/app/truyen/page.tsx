@@ -1,5 +1,3 @@
-// app/not-found.tsx
-
 import CuteCard from '@/components/CuteCard'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -11,12 +9,12 @@ export default function NotFound() {
     <main className="min-h-screen flex items-center justify-center p-4 bg-transparent">
       <CuteCard
         icon={<Cat className="animate-bounce" size={40} />}
-        title="Không tìm thấy trang!"
+        title="Trang đang được xây dựng!"
         titleLang="vi"
         className="max-w-md w-full"
       >
         <p className="text-gray-700 font-vi text-base">
-          Oops! Trang bạn tìm không tồn tại rồi... nhưng đừng buồn nhé~ 💔
+          Trang này vẫn chưa được xây xong... nhưng đừng buồn nhé~ 💔
         </p>
 
         <div className="relative group inline-block mt-4">

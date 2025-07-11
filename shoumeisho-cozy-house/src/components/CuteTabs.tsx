@@ -26,8 +26,8 @@ export default function CuteTabs({ tabs, defaultValue }: CuteTabsProps) {
             className={cn(
               'flex-1 px-4 py-2 text-center text-sm sm:text-base font-semibold transition-all duration-200',
               activeTab === tab.value
-                ? 'text-[#80C6EA] underline underline-offset-[6px] decoration-[3px]'
-                : 'text-gray-700 hover:text-[#80C6EA]'
+                ? 'text-[#80C6EA] decoration-[3px]'
+                : 'text-gray-400 hover:text-[#80C6EA]'
             )}
           >
             {tab.label}

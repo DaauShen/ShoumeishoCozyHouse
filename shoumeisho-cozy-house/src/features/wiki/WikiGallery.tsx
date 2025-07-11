@@ -76,7 +76,7 @@ export default function WikiGalleryGrid() {
           titleLang="vi"
         >
           <p className="text-sm text-gray-600 mb-4 text-justify">
-            Đây là các minh hoạ chính thức và fan art cho Shoumeisho Miku. Click vào để phóng to~
+            Đây là các art minh hoạ chính thức và fanart cho Shoumeisho Miku. Click vào ảnh để zoom~
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

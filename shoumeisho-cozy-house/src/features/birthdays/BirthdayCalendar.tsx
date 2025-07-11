@@ -36,27 +36,26 @@ export default function BirthdayCalendar() {
 
     return (
       <div className="space-y-4">
-        <div className="grid grid-cols-7 text-center font-medium text-sm text-muted-foreground">
+        <div className="grid grid-cols-7 text-center text-xs sm:text-sm font-medium text-muted-foreground">
           {weekdays.map((day) => (
             <div key={day}>{day}</div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-2">
+        <div className="grid grid-cols-7 gap-1 sm:gap-2">
           {paddedArray.map((day, idx) => {
             const dayEvents = events.find(e => e.day === day)
             const isToday = day === currentDay && month === currentMonth
-            const hasEvents = day !== null && dayEvents !== undefined
+            const hasEvents = day !== null && !!dayEvents
 
             return (
               <Dialog key={idx}>
                 <DialogTrigger asChild>
                   <div
                     className={clsx(
-                      'border rounded-xl p-2 min-h-[72px] text-sm cursor-pointer transition hover:shadow-sm bg-white',
+                      'rounded-lg border p-1 sm:p-2 min-h-[60px] sm:min-h-[70px] flex flex-col items-center justify-start text-xs sm:text-sm bg-white transition cursor-pointer',
                       isToday && 'border-pink-400 bg-pink-50 font-bold',
-                      hasEvents && 'hover:border-primary hover:ring-2 hover:ring-primary/30',
-                      !hasEvents && 'cursor-default text-muted-foreground'
+                      hasEvents ? 'hover:border-primary hover:ring-2 hover:ring-primary/20' : 'text-muted-foreground cursor-default'
                     )}
                     onClick={() => hasEvents && setSelectedDay(dayEvents)}
                   >
@@ -65,28 +64,33 @@ export default function BirthdayCalendar() {
                         <div>{day}</div>
                         {hasEvents && (
                           <>
-                            <div className="text-xs mt-1 text-primary flex items-center justify-center gap-1">
-                              <Cake size={12} /> {dayEvents.names[0]}
+                            {/* Mobile: chỉ hiện icon */}
+                            <Cake className="mt-1 text-primary block md:hidden" size={16} />
+
+                            {/* Desktop: hiện tên + số lượng */}
+                            <div className="hidden md:block text-xs mt-1 text-primary text-center">
+                              {dayEvents.names[0]}
+                              {dayEvents.names.length > 1 && (
+                                <div className="text-[11px] text-muted-foreground">
+                                  +{dayEvents.names.length - 1} nữa
+                                </div>
+                              )}
                             </div>
-                            {dayEvents.names.length > 1 && (
-                              <div className="text-[11px] text-muted-foreground text-center">
-                                +{dayEvents.names.length - 1} nữa
-                              </div>
-                            )}
                           </>
                         )}
+
                       </>
                     )}
                   </div>
                 </DialogTrigger>
                 {hasEvents && (
-                  <DialogContent className="max-w-md">
+                  <DialogContent className="max-w-sm sm:max-w-md">
                     <DialogHeader>
                       <DialogTitle className="flex items-center gap-2 text-primary">
                         <Cake size={20} /> Sinh nhật ngày {day}/{month}
                       </DialogTitle>
                     </DialogHeader>
-                    <ul className="space-y-1 text-sm">
+                    <ul className="space-y-1 text-sm mt-2">
                       {dayEvents.names.map((name, i) => (
                         <li key={i} className="flex items-center gap-2">
                           <Cake className="text-pink-400" size={16} /> {name}
@@ -149,11 +153,11 @@ export default function BirthdayCalendar() {
                   ))}
                 </div>
               </div>
-  
+
               {selectedMonth && (
                 <>
                   <h3 className="text-xl font-semibold mb-2 text-center text-primary">
-                    🎂 {months[selectedMonth - 1]}
+                    {months[selectedMonth - 1]}
                   </h3>
                   {renderMonthGrid(selectedMonth)}
                 </>
@@ -178,7 +182,7 @@ export default function BirthdayCalendar() {
                 onChange={(e) => setSearch(e.target.value)}
                 className="max-w-sm mb-4"
               />
-  
+
               <div className="space-y-6">
                 {filteredEvents.length === 0 ? (
                   <p className="text-sm italic text-muted-foreground">
@@ -192,7 +196,7 @@ export default function BirthdayCalendar() {
                         .replace(/[\u0300-\u036f]/g, '')
                         .toUpperCase()
                       const firstChar = normalized[0] ?? '?'
-  
+
                       if (!acc[firstChar]) acc[firstChar] = []
                       acc[firstChar].push(event)
                       return acc
@@ -234,5 +238,4 @@ export default function BirthdayCalendar() {
       ]}
     />
   )
-  
 }

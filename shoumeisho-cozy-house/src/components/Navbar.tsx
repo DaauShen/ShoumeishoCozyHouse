@@ -33,7 +33,7 @@ export default function Navbar() {
     { href: '/', icon: <Home size={24} />, label: 'Trang chủ' },
     { href: '/wiki', icon: <Book size={24} />, label: 'Wiki' },
     { href: '/birthday', icon: <Calendar size={24} />, label: 'Sinh nhật' },
-    { href: '/stories', icon: <Library size={24} />, label: 'Truyện' },
+    { href: '/truyen', icon: <Library size={24} />, label: 'Truyện' },
   ]
 
   return (
