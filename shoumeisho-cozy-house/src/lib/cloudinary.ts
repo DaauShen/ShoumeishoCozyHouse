@@ -14,7 +14,12 @@ export async function uploadImageToCloudinary(file: File, preset: 'cover' | 'cha
       body: formData,
     })
   
-    if (!res.ok) throw new Error('Cloudinary upload failed')
+    if (!res.ok) {
+      const errorText = await res.text()
+      console.error('Cloudinary Upload Error:', res.status, res.statusText, errorText)
+      throw new Error('Cloudinary upload failed')
+    }
+    
   
     const data = await res.json()
     return data.secure_url

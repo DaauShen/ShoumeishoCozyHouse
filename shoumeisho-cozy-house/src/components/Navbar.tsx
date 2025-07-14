@@ -36,6 +36,10 @@ export default function Navbar() {
     { href: '/truyen', icon: <Library size={24} />, label: 'Truyện' },
   ]
 
+  const hideNavbar = pathname.match(/^\/truyen\/[^/]+\/read\/[^/]+$/)
+
+  if (hideNavbar) return null
+
   return (
     <>
       <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-md bg-white border-[3px] border-[#80C6EA] shadow-lg px-4 py-2 rounded-3xl backdrop-blur-md">
