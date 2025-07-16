@@ -1,6 +1,5 @@
 'use client'
 
-import NoCopyWrapper from '@/components/NoCopyWrapper'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -97,7 +96,6 @@ export default function ComicReader({ comic, chapterIndex, className }: ComicRea
         {currentChapter.name}
       </h1>
 
-      <NoCopyWrapper>
         <div
           className="space-y-6 pb-28 cursor-pointer"
           onClick={() => setShowOverlay((prev) => !prev)}
@@ -116,7 +114,6 @@ export default function ComicReader({ comic, chapterIndex, className }: ComicRea
             </div>
           ))}
         </div>
-      </NoCopyWrapper>
 
       <div
         className={cn(

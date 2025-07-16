@@ -1,7 +1,6 @@
 'use client'
 
 import CuteCard from '@/components/CuteCard'
-import NoCopyWrapper from '@/components/NoCopyWrapper'
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { ImageIcon } from 'lucide-react'
 import Image from 'next/image'
@@ -9,58 +8,64 @@ import { useState } from 'react'
 
 const images = [
   {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image04_gfuw32.jpg',
-    caption: 'Official Design Sheet – Art by An Orange',
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679248/full_sbnmlo.png',
+    caption: 'Bản thiết kế chính thức – Illust. An Orange',
     width: 1439,
     height: 1198,
   },
   {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image07_mqwdwu.jpg',
-    caption: 'Main Chibi Visual – Art by yix',
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679345/yix_msmppj.png',
+    caption: 'Minh hoạ chibi chính – Illust. yix',
     width: 1000,
     height: 1000,
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379329/image08_mz0cwi.jpg',
-    caption: 'Sub Visual – Art by Ilyshia Qii',
+    caption: 'Minh hoạ phụ – Illust. Ilyshia Qii',
     width: 1080,
     height: 1439,
   },
   {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image05_homiv0.jpg',
-    caption: 'Icon/Avatar Illustration – Art by An Orange',
-    width: 900,
-    height: 900,
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679254/m%C3%A8o_c%C3%B3_n%E1%BB%81n_ijqaj5.png',
+    caption: 'Icon/Avatar – Illust. An Orange',
+    width: 1000,
+    height: 1000,
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image10_mpn2ds.jpg',
-    caption: 'Stupid ShouMiku #1 – Art by An Orange',
+    caption: 'ShouMiku ngu si #1 – Illust. An Orange',
     width: 1000,
     height: 1000,
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379326/image02_kh3mu1.jpg',
-    caption: 'Stupid ShouMiku #2 – Art by jidousha',
+    caption: 'ShouMiku ngu si #2 – Illust. jidousha',
     width: 1000,
     height: 1000,
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image11_kkqkx8.jpg',
-    caption: 'Illust. from “Giai điệu chữa lành tôi” – Art by An Orange',
+    caption: 'Minh hoạ từ wiki của “Giai điệu chữa lành tôi” – Illust. An Orange',
     width: 694,
     height: 769,
   },
   {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image12_ffa9ux.jpg',
-    caption: '“Ngũ Hành” – Art by An Orange',
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679398/%E2%92%B8_HMFCVN_%E2%92%B8_Nh%C3%A0_Tr%E1%BA%BB_Migu_%E2%92%B8_Amelodious_%E2%92%B8%E2%92%B8_20250522_101600_0003_ml7nc9.png',
+    caption: '““Ngũ Hành” – Illust. An Orange',
     width: 1440,
     height: 1440,
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image09_ql1rem.jpg',
-    caption: 'Wonder of Wonder – Art by alice',
+    caption: 'Wonder of Wonder art – Illust. alice',
     width: 956,
     height: 1439,
+  },
+  {
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679337/Summeisho_Miku_nthwkb.png',
+    caption: 'Summeisho Miku – Illust. Duy Anh',
+    width: 1500,
+    height: 1700,
   },
 ]
 
@@ -68,7 +73,6 @@ export default function WikiGalleryGrid() {
   const [selectedImage, setSelectedImage] = useState<null | typeof images[0]>(null)
 
   return (
-    <NoCopyWrapper>
         <CuteCard
           icon={<ImageIcon className="text-primary animate-wiggle-slight" />}
           title="Bộ sưu tập minh hoạ"
@@ -76,7 +80,7 @@ export default function WikiGalleryGrid() {
           className="mt-6" // ← Cập nhật ở đây
         >
           <p className="text-sm text-gray-600 mb-4 text-justify">
-            Đây là các art minh hoạ chính thức và fanart cho Shoumeisho Miku. Click vào ảnh để zoom~
+          Đây là những minh hoạ chính thức và fanart cho Shoumeisho Miku. Nhấn vào ảnh để phóng to.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -126,6 +130,5 @@ export default function WikiGalleryGrid() {
 
 
         </CuteCard>
-    </NoCopyWrapper>
   )
 }

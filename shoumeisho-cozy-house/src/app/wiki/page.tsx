@@ -1,5 +1,4 @@
 import CuteTabs from '@/components/CuteTabs'
-import NoCopyWrapper from '@/components/NoCopyWrapper'
 
 import WikiCredit from '@/features/wiki/WikiCredit'
 import WikiGallery from '@/features/wiki/WikiGallery'
@@ -19,17 +18,15 @@ export const metadata: Metadata = {
 export default function WikiPage() {
   return (
     <div className="max-w-3xl mx-auto py-10 space-y-6 px-4 font-vi">
-      <NoCopyWrapper>
         <div className="flex justify-center">
           <Image
-            src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image05_homiv0.jpg"
+            src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679254/m%C3%A8o_c%C3%B3_n%E1%BB%81n_ijqaj5.png"
             alt="Shoumeisho Miku"
             width={280}
             height={280}
             className="rounded-full object-cover w-[180px] sm:w-[220px] md:w-[260px] border-[4px] border-primary shadow-lg"
           />
         </div>
-      </NoCopyWrapper>
 
       <h1 className="text-3xl text-center font-bold text-primary flex items-center justify-center gap-2">
         <Sparkles className="text-pink-400 animate-wiggle" size={24} />

@@ -1,19 +1,33 @@
 'use client'
 
 import CuteCard from '@/components/CuteCard'
-import NoCopyWrapper from '@/components/NoCopyWrapper'
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
 import { Info } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
 export default function WikiInfo() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const images = [
+    {
+      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679344/yix_transparent_vstvz1.png',
+      caption: 'Thiết kế thường',
+    },
+    {
+      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679325/nobgxomi_1_yflwwg.png',
+      caption: 'Thiết kế hè',
+    },
+  ]
+  
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const currentImage = images[currentIndex]
 
   return (
     <CuteCard
@@ -75,69 +89,67 @@ export default function WikiInfo() {
           </li>
           <li><strong>• Màu sắc biểu tượng:</strong> #80C6EA (xanh trời)</li>
           <li><strong>• Nơi sinh sống:</strong> Không gian mạng</li>
-          <li>
+          <li className="flex items-center gap-2">
             <strong>• Chữ ký:</strong>
-            <NoCopyWrapper>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div className="cursor-zoom-in mt-2">
-                    <Image
-                      src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1751461420/black_sign_cgecuf.png"
-                      alt="Chữ ký"
-                      width={200}
-                      height={50}
-                      className="rounded-lg p-2"
-                    />
-                  </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
-                  <DialogTitle/>
-                  <div className="flex justify-center items-center w-full py-6">
-                    <Image
-                      src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1751461420/black_sign_cgecuf.png"
-                      alt="Zoom chữ ký"
-                      width={600}
-                      height={150}
-                      className="object-contain max-h-[60vh] rounded-xl"
-                      unoptimized
-                    />
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </NoCopyWrapper>
+            <Image
+              src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679375/black_sign_xsehaw.png"
+              alt="Chữ ký"
+              width={120}
+              height={30}
+              className="rounded-lg p-1 object-contain"
+            />
           </li>
+
+
         </ul>
 
         {/* Cột phải */}
         <div className="space-y-4 text-sm text-muted-foreground text-justify">
-          <NoCopyWrapper>
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
               <DialogTrigger asChild>
-                <div className="cursor-zoom-in" onClick={() => setIsModalOpen(true)}>
-                  <Image
-                    src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image01_q1oait.png"
-                    alt="Shoumeisho Miku"
-                    width={1080}
-                    height={1080}
-                    className="mx-auto rounded-xl shadow-md transition-all duration-300"
-                  />
+                <div className="border rounded-md shadow-md w-full max-w-xs mx-auto overflow-hidden cursor-zoom-in">
+                  <div className="flex justify-center gap-4 text-sm font-semibold mt-2">
+                    {images.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx) }}
+                        className={cn(
+                          'pb-1',
+                          currentIndex === idx
+                            ? 'border-b-2 border-blue-600 text-blue-600'
+                            : 'text-gray-500'
+                        )}
+                      >
+                        {img.caption}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="relative w-full aspect-[3/4] bg-white mt-2">
+                    <Image
+                      src={currentImage.url}
+                      alt={currentImage.caption}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
                 </div>
               </DialogTrigger>
+
               <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
-                <DialogTitle/>
+                <DialogTitle />
                 <div className="flex justify-center items-center w-full">
                   <Image
-                    src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image01_q1oait.png"
-                    alt="Shoumeisho Miku Zoomed"
+                    src={currentImage.url}
+                    alt={currentImage.caption}
                     width={1080}
                     height={1080}
-                    className="rounded-xl object-contain max-h-[90vh]"
+                    className="object-contain max-h-[90vh]"
                     unoptimized
                   />
                 </div>
               </DialogContent>
             </Dialog>
-          </NoCopyWrapper>
 
           <p className="font-medium">
           ShouMiku là biểu tượng được hình thành nên từ vô vàn cảm xúc, là sự kết hợp hài hoà giữa những mảnh ghép trong cộng đồng VocalSynth. Nhiệm vụ của ShouMiku là lan toả âm nhạc của cốt lõi, của tâm hồn đến với thế giới và bảo vệ cộng đồng VocalSynth khỏi những kẻ xấu với ý định cung cấp CCCD cho từng VocalSynth.
