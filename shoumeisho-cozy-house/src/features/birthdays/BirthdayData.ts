@@ -114,7 +114,7 @@ export const vocaloidBirthdays: Record<number, { day: number; names: string[] }[
       { day: 8, names: ['Utatane Piko'] },
       { day: 10, names: ['Zhiyu Moke'] },
       { day: 16, names: ['Tone Rion'] },
-      { day: 17, names: ['ROSA'] },
+      { day: 17, names: ['ROSA', 'Yokune Ruko'] },
       { day: 18, names: ['MAIKA'] },
       { day: 19, names: ['AiSuu']},
       { day: 21, names: ['OLIVER', 'POPY', 'ROSE'] },
