@@ -51,7 +51,7 @@ const images = [
   },
   {
     src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679398/%E2%92%B8_HMFCVN_%E2%92%B8_Nh%C3%A0_Tr%E1%BA%BB_Migu_%E2%92%B8_Amelodious_%E2%92%B8%E2%92%B8_20250522_101600_0003_ml7nc9.png',
-    caption: '““Ngũ Hành” – Illust. An Orange',
+    caption: '“Ngũ Hành” – Illust. An Orange',
     width: 1440,
     height: 1440,
   },

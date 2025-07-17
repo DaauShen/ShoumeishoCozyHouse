@@ -21,7 +21,7 @@ export default function WikiInfo() {
       caption: 'Thiết kế thường',
     },
     {
-      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679325/nobgxomi_1_yflwwg.png',
+      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752717498/summer_sfi86r.png',
       caption: 'Thiết kế hè',
     },
   ]
@@ -116,7 +116,7 @@ export default function WikiInfo() {
                         className={cn(
                           'pb-1',
                           currentIndex === idx
-                            ? 'border-b-2 border-blue-600 text-blue-600'
+                            ? 'border-b-2 border-[#80C6EA] text-[#80C6EA]'
                             : 'text-gray-500'
                         )}
                       >
