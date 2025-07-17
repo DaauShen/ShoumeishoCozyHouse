@@ -51,7 +51,7 @@ export default function HomePage() {
         <p className="mt-2">
           Đây là căn nhà ấm cúng của page
           <strong> "Chừng nào Vocaloid có CCCD thì xóa blog"</strong>. Tại đây bạn có thể
-          tìm hiểu về <strong>Shoumeisho Miku - fanloid đại diện cho blog -</strong> và những câu chuyện thú vị xoay quanh các Vocaloid khác. Hãy kéo xuống dưới để cùng khám phá nhé :3
+          tìm hiểu về <strong>Shoumeisho Miku - fanloid đại diện cho blog -</strong> và những câu chuyện thú vị xoay quanh các Vocal Synth khác. Hãy kéo xuống dưới để cùng khám phá nhé :3
         </p>
       </CuteCard>
 
@@ -108,8 +108,8 @@ export default function HomePage() {
           </Button>
         </CuteCard>
 
-        <CuteCard icon={<Calendar size={28} />} title="Lịch sinh nhật của Vocaloid">
-          <p className="mb-2">Ăn mừng sinh nhật của Vocaloid mà bạn yêu thích ngay thôi nào!</p>
+        <CuteCard icon={<Calendar size={28} />} title="Lịch sinh nhật của Vocal Synth">
+          <p className="mb-2">Ăn mừng sinh nhật của Vocal Synth mà bạn yêu thích ngay thôi nào!</p>
           <Button
             variant="outline"
             className="rounded-full text-primary border-primary"
