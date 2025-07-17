@@ -87,7 +87,7 @@ export default function WikiInfo() {
               </PopoverContent>
             </Popover>
           </li>
-          <li><strong>• Màu sắc biểu tượng:</strong> #80C6EA (xanh trời)</li>
+          <li><strong>• Màu sắc biểu tượng:</strong> <span className="text-[#80C6EA]">#80C6EA (xanh trời)</span></li>
           <li><strong>• Nơi sinh sống:</strong> Không gian mạng</li>
           <li className="flex items-center gap-2">
             <strong>• Chữ ký:</strong>
