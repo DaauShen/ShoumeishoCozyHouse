@@ -26,7 +26,7 @@ export default function CuteCard({
         {title && (
           <CardTitle
             className={cn(
-              'text-2xl text-[#80C6EA]',
+              'text-2xl text-[#80C6EA] text-center',
               titleLang === 'jp' ? 'font-jp' : 'font-vi'
             )}
           >

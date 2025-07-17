@@ -81,7 +81,7 @@ export default function HomePage() {
           </Button>
         </CuteCard>
 
-        <CuteCard icon={<Library size={28} />} title="Đọc truyện dễ thương">
+        <CuteCard icon={<Library size={28} />} title="Đọc manga và light novel">
           <p className="mb-2">Nơi đọc những bộ manga mà bọn tớ dịch và novel tự sáng tác.</p>
           <Button
             variant="outline"
