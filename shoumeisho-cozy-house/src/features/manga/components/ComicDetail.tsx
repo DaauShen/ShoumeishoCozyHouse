@@ -146,21 +146,23 @@ export default function ComicDetail({ comic, className, isLoggedIn }: ComicDetai
         <Separator className="my-2 bg-[#80C6EA]" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentChapters.map((chap, index) => (
-            <div
-              key={startIndex + index}
-              className="flex gap-2 items-center bg-[#80C6EA]/10 px-4 py-2 rounded-md min-w-0"
-            >
-              <Button
-                variant="link"
-                className="px-0 text-left justify-start text-xs md:text-sm text-[#80C6EA] break-words whitespace-normal w-full min-w-0"
-                onClick={() => router.push(`/truyen/${comic.id}/read/${startIndex + index}`)}
+          {currentChapters.slice().reverse().map((chap, reversedIndex) => {
+            const realIndex = startIndex + (currentChapters.length - 1 - reversedIndex)
+            return (
+              <div
+                key={realIndex}
+                className="flex gap-2 items-center bg-[#80C6EA]/10 px-4 py-2 rounded-md min-w-0"
               >
-                {chap.name || `Chương ${startIndex + index + 1}`}
-              </Button>
-
-            </div>
-          ))}
+                <Button
+                  variant="link"
+                  className="px-0 text-left justify-start text-xs md:text-sm text-[#80C6EA] break-words whitespace-normal w-full min-w-0"
+                  onClick={() => router.push(`/truyen/${comic.id}/read/${realIndex}`)}
+                >
+                  {chap.name || `Chương ${realIndex + 1}`}
+                </Button>
+              </div>
+            )
+          })}
         </div>
 
 
