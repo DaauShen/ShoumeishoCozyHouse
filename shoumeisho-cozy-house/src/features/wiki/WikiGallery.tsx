@@ -67,6 +67,12 @@ const images = [
     width: 1500,
     height: 1700,
   },
+  {
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1753276408/Art_by_yze_KD_%E2%92%B8_Ch%E1%BB%ABng_n%C3%A0o_Vocaloid_c%C3%B3_CCCD_th%C3%AC_xo%C3%A1_blog_20250723_192656_0000_yaqy7r.png',
+    caption: 'Minh hoạ mừng kỉ niệm 2000 lượt theo dõi – Illust. yze & KD',
+    width: 1500,
+    height: 1800,
+  },
 ]
 
 export default function WikiGalleryGrid() {
