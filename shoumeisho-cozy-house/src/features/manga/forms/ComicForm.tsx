@@ -3,17 +3,17 @@
 import CoverUpload from '@/components/CoverUpload'
 import { Button } from '@/components/ui/button'
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
-import { uploadImageToCloudinary } from '@/lib/cloudinary'
+import { uploadCoverToCloudinary } from '@/lib/cloudinary'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -33,6 +33,15 @@ const defaultComic: ComicDTO = {
   description: '',
 }
 
+function toFolderName(title: string): string {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '_')         // thay khoảng trắng bằng _
+    .replace(/[^a-z0-9_]/g, '')   // loại bỏ ký tự đặc biệt (tuỳ chọn)
+}
+
+
 export default function ComicForm({ defaultValues, onSubmit }: ComicFormProps) {
   const [coverFile, setCoverFile] = useState<File | null>(null)
 
@@ -51,7 +60,7 @@ export default function ComicForm({ defaultValues, onSubmit }: ComicFormProps) {
     let coverUrl = data.coverUrl
 
     if (coverFile) {
-      coverUrl = await uploadImageToCloudinary(coverFile, 'cover')
+      coverUrl = await uploadCoverToCloudinary(coverFile, toFolderName(form.getValues('title')))
     }
 
     onSubmit({

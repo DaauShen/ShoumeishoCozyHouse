@@ -66,12 +66,20 @@ export function useCreateChapter(comicId: string) {
   })
 }
 
+interface DeleteChapterParams {
+  comicId: string
+  chapterIndex: number
+}
+
 // Xoá chương
-export function useDeleteChapter(comicId: string, chapterIndex: number) {
+export function useDeleteChapter() {
   const queryClient = useQueryClient()
+
   return useMutation({
-    mutationFn: () => deleteChapter(comicId, chapterIndex),
-    onSuccess: () => {
+    mutationFn: async ({ comicId, chapterIndex }: DeleteChapterParams) => {
+      return deleteChapter(comicId, chapterIndex)
+    },
+    onSuccess: (_data, { comicId }) => {
       queryClient.invalidateQueries({ queryKey: ['comics', comicId] })
     },
   })

@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-import { uploadImageToCloudinary } from '@/lib/cloudinary'
+import { uploadChapterImageToCloudinary } from '@/lib/cloudinary'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -16,11 +16,20 @@ import ImageSortableGrid from './ImageSortableGrid'
 
 type ChapterFormProps = {
   comicId: string
+  comicName: string
 }
 
 type PreviewImage = { file: File; url: string }
 
-export default function ChapterForm({ comicId }: ChapterFormProps) {
+function toFolderName(title: string): string {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '_')         // thay khoảng trắng bằng _
+    .replace(/[^a-z0-9_]/g, '')   // loại bỏ ký tự đặc biệt (tuỳ chọn)
+}
+
+export default function ChapterForm({ comicId, comicName }: ChapterFormProps) {
   const [images, setImages] = useState<PreviewImage[]>([])
   const { mutateAsync, isPending } = useCreateChapter(comicId)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -73,10 +82,10 @@ export default function ChapterForm({ comicId }: ChapterFormProps) {
       toast.error('Tên chương không được vượt quá 100 ký tự.')
       return
     }
-
+    toast.success('Đang tải lên, vui lòng chờ...')
     try {
       const imageUrls = await Promise.all(
-        images.map((img) => uploadImageToCloudinary(img.file, 'chapter'))
+        images.map((img) => uploadChapterImageToCloudinary(img.file, toFolderName(comicName), toFolderName(data.name)))
       )
 
       await mutateAsync({

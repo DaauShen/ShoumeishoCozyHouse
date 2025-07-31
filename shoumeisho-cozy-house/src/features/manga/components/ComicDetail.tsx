@@ -1,14 +1,25 @@
 'use client'
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
-import { Book, BookOpen, Edit, Info, Plus } from 'lucide-react'
+import { Book, BookOpen, Edit, Info, Plus, Trash } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Comic } from '../config/comicConfig'
+import { useDeleteChapter } from '../query/queries'
 
 type ComicDetailProps = {
   comic: Comic
@@ -20,6 +31,9 @@ const CHAPTERS_PER_PAGE = 10 // Số chương mỗi trang
 
 export default function ComicDetail({ comic, className, isLoggedIn }: ComicDetailProps) {
   const [showFullDescription, setShowFullDescription] = useState(false)
+
+  const { mutate: deleteChapter } = useDeleteChapter()
+
   const router = useRouter()
 
   const latestChapterIndex = comic.chapters.length - 1
@@ -146,13 +160,42 @@ export default function ComicDetail({ comic, className, isLoggedIn }: ComicDetai
         <Separator className="my-2 bg-[#80C6EA]" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {currentChapters.slice().reverse().map((chap, reversedIndex) => {
-            const realIndex = startIndex + (currentChapters.length - 1 - reversedIndex)
-            return (
-              <div
-                key={realIndex}
-                className="flex gap-2 items-center bg-[#80C6EA]/10 px-4 py-2 rounded-md min-w-0"
-              >
+        {currentChapters.slice().reverse().map((chap, reversedIndex) => {
+          const realIndex = startIndex + (currentChapters.length - 1 - reversedIndex)
+
+          return (
+            <div
+              key={realIndex}
+              className="flex items-center justify-between bg-[#80C6EA]/10 px-4 py-2 rounded-md"
+            >
+              <div className="flex items-center gap-2 w-full">
+              {isLoggedIn && (
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-red-500 hover:bg-red-100 shrink-0"
+                      >
+                        <Trash className="w-4 h-4" />
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Bạn có chắc muốn xoá chương này?</AlertDialogTitle>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Huỷ</AlertDialogCancel>
+                        <AlertDialogAction
+                          className="bg-red-500 hover:bg-red-600"
+                          onClick={() => deleteChapter({comicId: comic.id, chapterIndex: realIndex})}
+                        >
+                          Xoá
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                )}
                 <Button
                   variant="link"
                   className="px-0 text-left justify-start text-xs md:text-sm text-[#80C6EA] break-words whitespace-normal w-full min-w-0"
@@ -161,9 +204,12 @@ export default function ComicDetail({ comic, className, isLoggedIn }: ComicDetai
                   {chap.name || `Chương ${realIndex + 1}`}
                 </Button>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          )
+        })}
+      </div>
+
+
 
 
         <div className="flex items-center justify-center gap-4 mt-4 font-vi text-xs md:text-sm">
