@@ -73,6 +73,12 @@ const images = [
     width: 1500,
     height: 1800,
   },
+  {
+    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1754661507/Shoumeinya_Miku_hslwxy.png',
+    caption: 'Minh hoạ mừng ngày Quốc tế Mèo 2025 – Illust. jidousha',
+    width: 2048,
+    height: 2048
+  }
 ]
 
 export default function WikiGalleryGrid() {
