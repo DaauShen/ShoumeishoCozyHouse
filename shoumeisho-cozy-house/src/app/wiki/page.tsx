@@ -20,7 +20,7 @@ export default function WikiPage() {
     <div className="max-w-3xl mx-auto py-10 space-y-6 px-4 font-vi">
         <div className="flex justify-center">
           <Image
-            src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679254/m%C3%A8o_c%C3%B3_n%E1%BB%81n_ijqaj5.png"
+            src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1758031969/image03_wjmvxe.jpg"
             alt="Shoumeisho Miku"
             width={280}
             height={280}

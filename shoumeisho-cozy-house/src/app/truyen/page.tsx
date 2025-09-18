@@ -5,15 +5,12 @@ import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import ComicCard from '@/features/manga/components/ComicCard'
 import { useComics } from '@/features/manga/query/queries'
-import { useAuth } from '@/providers/AuthProvider'
 import { Loader2 } from 'lucide-react'
-import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 
 const ITEMS_PER_PAGE = 8
 
 export default function MangaListPage() {
-  const { user } = useAuth()
   const { data: comics = [], isLoading } = useComics()
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
@@ -43,11 +40,6 @@ export default function MangaListPage() {
           onChange={(e) => setSearch(e.target.value)}
           className="w-full sm:max-w-xs border-[#80C6EA] font-vi"
         />
-        {user && (
-          <Button asChild className="bg-[#80C6EA] hover:bg-blue-500 font-vi">
-            <Link href="/truyen/create">Tạo truyện mới</Link>
-          </Button>
-        )}
       </div>
 
       <Separator className="bg-[#80C6EA]" />

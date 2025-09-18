@@ -1,33 +1,12 @@
 'use client'
 
-import LogoutDialog from '@/components/login/LogOutDialog'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import { auth } from '@/lib/firebase'
-import { useAuth } from '@/providers/AuthProvider'
 import clsx from 'clsx'
-import { signOut } from 'firebase/auth'
-import { Book, Calendar, Home, Library, User } from 'lucide-react'
+import { Book, Calendar, Home, Library } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { toast } from 'sonner'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const pathname = usePathname()
-  const router = useRouter()
-  const { user } = useAuth()
-  const [dialogOpen, setDialogOpen] = useState(false)
-
-  const handleLogout = async () => {
-    await signOut(auth)
-    toast.success('👋 Bạn đã đăng xuất!')
-    setDialogOpen(false)
-    router.push('/')
-  }
 
   const navItems = [
     { href: '/', icon: <Home size={24} />, label: 'Trang chủ' },
@@ -61,7 +40,7 @@ export default function Navbar() {
           ))}
 
           {/* Popover Account */}
-          {user ? (
+          {/* {user ? (
             <Popover>
               <PopoverTrigger asChild>
                 <button
@@ -98,15 +77,15 @@ export default function Navbar() {
                 <span className="text-[10px] mt-0.5">Đăng nhập</span>
               </div>
             </Link>
-          )}
+          )} */}
         </div>
       </nav>
 
-      <LogoutDialog
+      {/* <LogoutDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         onConfirm={handleLogout}
-      />
+      /> */}
     </>
   )
 }

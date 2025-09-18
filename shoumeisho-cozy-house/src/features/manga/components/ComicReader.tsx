@@ -108,7 +108,7 @@ export default function ComicReader({ comic, chapterIndex, className }: ComicRea
                 width={1200}
                 height={1600}
                 loading="lazy"
-                className="w-full h-auto object-contain rounded-lg shadow"
+                className="w-full h-auto object-contain shadow"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
               />
             </div>

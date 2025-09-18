@@ -17,11 +17,11 @@ export default function WikiInfo() {
 
   const images = [
     {
-      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679344/yix_transparent_vstvz1.png',
+      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1758031932/image01_uwwbei.png',
       caption: 'Thiết kế thường',
     },
     {
-      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752717498/summer_sfi86r.png',
+      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1758031935/summer_nnzmzn.png',
       caption: 'Thiết kế hè',
     },
   ]
@@ -92,7 +92,7 @@ export default function WikiInfo() {
           <li className="flex items-center gap-2">
             <strong>• Chữ ký:</strong>
             <Image
-              src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679375/black_sign_xsehaw.png"
+              src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1758031926/black_sign_y35mor.png"
               alt="Chữ ký"
               width={120}
               height={30}

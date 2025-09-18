@@ -1,146 +1,119 @@
 'use client'
 
 import CuteCard from '@/components/CuteCard'
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { ImageIcon } from 'lucide-react'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { getWikiGallery } from '@/lib/sanityQueries'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const images = [
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679248/full_sbnmlo.png',
-    caption: 'Bản thiết kế chính thức – Illust. An Orange',
-    width: 1439,
-    height: 1198,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679345/yix_msmppj.png',
-    caption: 'Minh hoạ chibi chính – Illust. yix',
-    width: 1000,
-    height: 1000,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379329/image08_mz0cwi.jpg',
-    caption: 'Minh hoạ phụ – Illust. Ilyshia Qii',
-    width: 1080,
-    height: 1439,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679254/m%C3%A8o_c%C3%B3_n%E1%BB%81n_ijqaj5.png',
-    caption: 'Icon/Avatar – Illust. An Orange',
-    width: 1000,
-    height: 1000,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image10_mpn2ds.jpg',
-    caption: 'ShouMiku ngu si #1 – Illust. An Orange',
-    width: 1000,
-    height: 1000,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379326/image02_kh3mu1.jpg',
-    caption: 'ShouMiku ngu si #2 – Illust. jidousha',
-    width: 1000,
-    height: 1000,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379328/image11_kkqkx8.jpg',
-    caption: 'Minh hoạ từ wiki của “Giai điệu chữa lành tôi” – Illust. An Orange',
-    width: 694,
-    height: 769,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679398/%E2%92%B8_HMFCVN_%E2%92%B8_Nh%C3%A0_Tr%E1%BA%BB_Migu_%E2%92%B8_Amelodious_%E2%92%B8%E2%92%B8_20250522_101600_0003_ml7nc9.png',
-    caption: '“Ngũ Hành” – Illust. An Orange',
-    width: 1440,
-    height: 1440,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1751379327/image09_ql1rem.jpg',
-    caption: 'Wonder of Wonder art – Illust. alice',
-    width: 956,
-    height: 1439,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1752679337/Summeisho_Miku_nthwkb.png',
-    caption: 'Summeisho Miku – Illust. Duy Anh',
-    width: 1500,
-    height: 1700,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1753276408/Art_by_yze_KD_%E2%92%B8_Ch%E1%BB%ABng_n%C3%A0o_Vocaloid_c%C3%B3_CCCD_th%C3%AC_xo%C3%A1_blog_20250723_192656_0000_yaqy7r.png',
-    caption: 'Minh hoạ mừng kỉ niệm 2000 lượt theo dõi – Illust. yze & KD',
-    width: 1500,
-    height: 1800,
-  },
-  {
-    src: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1754661507/Shoumeinya_Miku_hslwxy.png',
-    caption: 'Minh hoạ mừng ngày Quốc tế Mèo 2025 – Illust. jidousha',
-    width: 2048,
-    height: 2048
-  }
-]
+interface GalleryImage {
+  src: string
+  width: number
+  height: number
+  caption: string
+}
 
-export default function WikiGalleryGrid() {
-  const [selectedImage, setSelectedImage] = useState<null | typeof images[0]>(null)
+interface ImageSection {
+  title: string
+  value: string
+  images: GalleryImage[]
+}
+
+export default function WikiGalleryAccordion() {
+  const [imageSections, setImageSections] = useState<ImageSection[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true)
+      const data = await getWikiGallery({ order: 'asc' })
+      const sections: ImageSection[] = data.map((item, idx) => ({
+        title: item.title,
+        value: `section-${idx}`,
+        images: item.images,
+      }))
+      setImageSections(sections)
+      setLoading(false)
+    }
+    fetchData()
+  }, [])
 
   return (
-        <CuteCard
-          icon={<ImageIcon className="text-primary animate-wiggle-slight" />}
-          title="Bộ sưu tập minh hoạ"
-          titleLang="vi"
-          className="mt-6" // ← Cập nhật ở đây
+    <CuteCard
+      title="Bộ sưu tập minh hoạ"
+      titleLang="vi"
+      className="mt-6"
+    >
+      <p className="text-sm text-gray-600 mb-4 text-justify">
+        Đây là những minh hoạ chính thức và fanart cho Shoumeisho Miku. Nhấn vào ảnh để phóng to.
+      </p>
+
+      {loading ? (
+        // Skeleton dạng block
+        <div
+          className="bg-gray-300 animate-pulse rounded-xl h-48"
+        />
+      ) : (
+        <Accordion
+          type="single"
+          collapsible
+          defaultValue={imageSections[0]?.value} // Tab đầu tiên mở sẵn
+          className="space-y-4 font-vi text-left"
         >
-          <p className="text-sm text-gray-600 mb-4 text-justify">
-          Đây là những minh hoạ chính thức và fanart cho Shoumeisho Miku. Nhấn vào ảnh để phóng to.
-          </p>
+          {imageSections.map((section) => (
+            <AccordionItem key={section.value} value={section.value}>
+              <AccordionTrigger className="text-base font-semibold">
+                {section.title}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-muted-foreground space-y-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {section.images.map((img, idx) => (
+                    <Dialog key={idx} onOpenChange={(open) => setSelectedImage(open ? img : null)}>
+                      <DialogTrigger asChild>
+                        <div className="flex flex-col cursor-zoom-in group">
+                          <div
+                            className="relative w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-all"
+                            style={{ aspectRatio: `${img.width} / ${img.height}` }}
+                          >
+                            <Image
+                              src={img.src}
+                              alt={img.caption}
+                              fill
+                              loading="lazy"
+                              className="object-cover transition-transform group-hover:scale-[1.02]"
+                            />
+                          </div>
+                          <div className="px-2 py-2 text-center text-sm text-gray-700 font-vi min-h-[48px] flex items-center justify-center">
+                            {img.caption}
+                          </div>
+                        </div>
+                      </DialogTrigger>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {images.map((img, idx) => (
-              <Dialog key={idx} onOpenChange={(open) => setSelectedImage(open ? img : null)}>
-                <DialogTrigger asChild>
-                  <div className="flex flex-col cursor-zoom-in group">
-                    {/* Ảnh với border riêng */}
-                    <div
-                      className="relative w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-all"
-                      style={{ aspectRatio: `${img.width} / ${img.height}` }}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.caption}
-                        fill
-                        loading="lazy"
-                        className="object-cover transition-transform group-hover:scale-[1.02]"
-                      />
-                    </div>
-
-                    {/* Caption riêng biệt, không có border */}
-                    <div className="px-2 py-2 text-center text-sm text-gray-700 font-vi min-h-[48px] flex items-center justify-center">
-                      {img.caption}
-                    </div>
-                  </div>
-                </DialogTrigger>
-
-                <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
-                  <DialogTitle />
-                  <div className="flex flex-col items-center gap-2">
-                    <Image
-                      src={img.src}
-                      alt={img.caption}
-                      width={img.width}
-                      height={img.height}
-                      loading="lazy"
-                      className="rounded-xl object-contain max-h-[90vh] w-auto"
-                      unoptimized
-                    />
-                  </div>
-                </DialogContent>
-              </Dialog>
-            ))}
-          </div>
-
-
-
-        </CuteCard>
+                      <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
+                        <DialogTitle />
+                        <DialogDescription/>
+                        <div className="flex flex-col items-center gap-2">
+                          <Image
+                            src={img.src}
+                            alt={img.caption}
+                            width={img.width}
+                            height={img.height}
+                            loading="lazy"
+                            className="rounded-xl object-contain max-h-[90vh] w-auto"
+                            unoptimized
+                          />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      )}
+    </CuteCard>
   )
 }

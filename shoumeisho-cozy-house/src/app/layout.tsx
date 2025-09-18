@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar'
-import { AuthProvider } from '@/providers/AuthProvider'
 
 import QueryProvider from '@/components/QueryProvider'
 import { Toaster } from 'sonner'
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja">
       <body className="font-default bg-[#FFFDF7] text-gray-800 min-h-screen flex flex-col">
         <QueryProvider>
-          <AuthProvider>
           <Toaster
             position="top-right"
             richColors
@@ -31,9 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
           <Navbar />
           <main className="flex-1 p-4 pb-24">{children}</main>
-        </AuthProvider>
         </QueryProvider>
-        
       </body>
     </html>
   )
