@@ -63,6 +63,14 @@ export default function WikiInfo() {
               <li className="flex items-start"><span className="mr-2 text-primary">+</span>25 tuổi con người</li>
             </ul>
           </li>
+          <li><strong>• Chiều cao:</strong> 174cm</li>
+          <li>
+            <strong>• Cân nặng:</strong>
+            <ul className="pl-6 mt-1 space-y-1 text-sm">
+              <li className="flex items-start"><span className="mr-2 text-primary">+</span>42kg (chưa tính tóc)</li>
+              <li className="flex items-start"><span className="mr-2 text-primary">+</span>45kg (tính cả tóc)</li>
+            </ul>
+          </li>
           <li><strong>• Sinh nhật:</strong> 08.12.2024</li>
           <li>
             <strong>• Giới tính:</strong> VocaHuman

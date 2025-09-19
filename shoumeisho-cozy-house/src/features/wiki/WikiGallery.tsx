@@ -4,6 +4,7 @@ import CuteCard from '@/components/CuteCard'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { getWikiGallery } from '@/lib/sanityQueries'
+import { Image as ImageIcon } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -42,12 +43,13 @@ export default function WikiGalleryAccordion() {
 
   return (
     <CuteCard
+    icon={<ImageIcon className="text-primary animate-bounce" />}
       title="Bộ sưu tập minh hoạ"
       titleLang="vi"
       className="mt-6"
     >
       <p className="text-sm text-gray-600 mb-4 text-justify">
-        Đây là những minh hoạ chính thức và fanart cho Shoumeisho Miku. Nhấn vào ảnh để phóng to.
+      Đây là những minh hoạ chính thức và không chính thức cho Shoumeisho Miku. Nhấn vào ảnh để phóng to.
       </p>
 
       {loading ? (

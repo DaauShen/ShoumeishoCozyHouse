@@ -7,6 +7,7 @@ import WikiInfo from '@/features/wiki/WikiInfo'
 import { Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
+import Tos from '@/features/wiki/Tos'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -57,6 +58,11 @@ export default function WikiPage() {
             value: 'credit',
             content: <WikiCredit />,
             },
+            {
+            label: 'Điều khoản sử dụng',
+            value: 'tos',
+            content: <Tos/>
+            }
         ]}
         />
     </div>
