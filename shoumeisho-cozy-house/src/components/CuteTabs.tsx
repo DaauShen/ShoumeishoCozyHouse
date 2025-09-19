@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 
 interface CuteTabsProps {
   tabs: {
@@ -17,8 +18,8 @@ export default function CuteTabs({ tabs, defaultValue }: CuteTabsProps) {
 
   return (
     <div className="w-full mt-6 font-vi">
-      {/* Tab header */}
-      <div className="flex overflow-hidden rounded-full border-[3px] border-[#80C6EA] bg-white shadow-lg">
+      {/* Tab header for desktop */}
+      <div className="hidden sm:flex overflow-hidden rounded-full border-[3px] border-[#80C6EA] bg-white shadow-lg">
         {tabs.map((tab) => (
           <button
             key={tab.value}
@@ -26,7 +27,7 @@ export default function CuteTabs({ tabs, defaultValue }: CuteTabsProps) {
             className={cn(
               'flex-1 px-4 py-2 text-center text-sm sm:text-base font-semibold transition-all duration-200',
               activeTab === tab.value
-                ? 'text-[#80C6EA] decoration-[3px]'
+                ? 'text-[#80C6EA]'
                 : 'text-gray-400 hover:text-[#80C6EA]'
             )}
           >
@@ -34,6 +35,23 @@ export default function CuteTabs({ tabs, defaultValue }: CuteTabsProps) {
           </button>
         ))}
       </div>
+
+      {/* Dropdown for mobile */}
+      <div className="sm:hidden">
+        <Select value={activeTab} onValueChange={setActiveTab}>
+          <SelectTrigger className="w-full rounded-lg border-[3px] border-[#80C6EA] bg-white px-3 py-2 text-sm font-semibold text-[#80C6EA] shadow-lg">
+            <SelectValue placeholder="Chọn mục" />
+          </SelectTrigger>
+          <SelectContent>
+            {tabs.map((tab) => (
+              <SelectItem key={tab.value} value={tab.value}>
+                {tab.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+        
 
       {/* Tab content */}
       <div className="mt-4">

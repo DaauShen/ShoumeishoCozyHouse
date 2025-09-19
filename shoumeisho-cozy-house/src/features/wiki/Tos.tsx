@@ -2,10 +2,10 @@
 
 import CuteCard from '@/components/CuteCard'
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from '@/components/ui/accordion'
 import { FileText } from 'lucide-react'
 
@@ -31,7 +31,7 @@ export default function WikiCredit() {
             <div>
               <p className="text-lg font-bold">Về phần nhân vật:</p>
               <p>
-                “Nhân vật” ở đây là bao gồm tất cả các hình ảnh, thiết kế, đặc điểm và tên nhân vật
+                “Nhân vật” ở đây là bao gồm tất cả các hình ảnh, thiết kế và tên nhân vật
                 “Shoumeisho Miku” được sử dụng cho tất cả các sản phẩm.
               </p>
               <p className="mt-2 font-semibold">Những việc sử dụng được cấp phép mà không cần liên hệ trước:</p>
