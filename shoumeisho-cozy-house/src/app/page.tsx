@@ -19,11 +19,16 @@ import CommunityLinkCard from '@/components/CommunityLinkCard'
 import CuteCard from '@/components/CuteCard'
 import { Button } from '@/components/ui/button'
 
-import { getTodayBirthdays } from '@/features/birthdays/getTodayBirthdays'
+import { Birthday, getTodayBirthday } from '@/lib/sanityQueries'
+import { useEffect, useState } from 'react'
 
 export default function HomePage() {
   const router = useRouter()
-  const todayBirthdays = getTodayBirthdays()
+  const [todayBirthdays, setTodayBirthdays] = useState<Birthday[]>([]);
+
+  useEffect(() => {
+    getTodayBirthday().then((data) => setTodayBirthdays(data));
+  })
 
   return (
     <div className="flex flex-col items-center space-y-16 mt-10 px-4 pb-[120px]">
@@ -55,15 +60,15 @@ export default function HomePage() {
         </p>
       </CuteCard>
 
-      {todayBirthdays.names.length > 0 && (
+      {todayBirthdays.length > 0 && (
       <CuteCard
         icon={<Cake className="text-pink-500 animate-bounce" />}
         title="Hôm nay là sinh nhật của:"
         titleLang="vi"
         className="max-w-xl w-full border-pink-300 bg-pink-50 text-pink-700"
       >
-          {todayBirthdays.names.map((name, idx) => (
-            <p className="mt-1" key={idx}><strong>{name}</strong></p>
+          {todayBirthdays.map((bd, idx) => (
+            <p className="mt-1" key={idx}><strong>{bd.character}</strong></p>
           ))}
       </CuteCard>
     )}

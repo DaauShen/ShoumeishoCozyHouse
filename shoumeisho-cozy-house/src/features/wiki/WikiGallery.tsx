@@ -83,9 +83,11 @@ export default function WikiGalleryAccordion() {
                               src={img.src}
                               alt={img.caption}
                               fill
+                              sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                               loading="lazy"
                               className="object-cover transition-transform group-hover:scale-[1.02]"
                             />
+
                           </div>
                           <div className="px-2 py-2 text-center text-sm text-gray-700 font-vi min-h-[48px] flex items-center justify-center">
                             {img.caption}

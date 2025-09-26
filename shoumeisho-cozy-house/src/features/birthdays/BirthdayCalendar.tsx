@@ -4,10 +4,11 @@ import CuteTabs from '@/components/CuteTabs'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import type { Birthday } from '@/lib/sanityQueries'
+import { getBirthdayList } from '@/lib/sanityQueries'; // 👈 import query
 import clsx from 'clsx'
 import { Cake, CalendarDays, Search } from 'lucide-react'
-import { useState } from 'react'
-import { vocaloidBirthdays } from './BirthdayData'
+import { useEffect, useState } from 'react'
 
 const months = [
   'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4',
@@ -26,13 +27,46 @@ export default function BirthdayCalendar() {
   const [search, setSearch] = useState('')
   const [selectedDay, setSelectedDay] = useState<{ day: number, names: string[] } | null>(null)
 
+  // === state cho data từ sanity
+  const [birthdays, setBirthdays] = useState<Birthday[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getBirthdayList()
+        setBirthdays(data)
+      } catch (err) {
+        console.error('Failed to fetch birthdays:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
+
+  // group birthdays theo tháng -> { month: [{day, names[]}] }
+  const birthdayByMonth: Record<number, { day: number; names: string[] }[]> = {}
+  birthdays.forEach(b => {
+    const date = new Date(b.date)
+    const m = date.getMonth() + 1
+    const d = date.getDate()
+    if (!birthdayByMonth[m]) birthdayByMonth[m] = []
+    let existing = birthdayByMonth[m].find(e => e.day === d)
+    if (existing) {
+      existing.names.push(b.character)
+    } else {
+      birthdayByMonth[m].push({ day: d, names: [b.character] })
+    }
+  })
+
   const renderMonthGrid = (month: number) => {
     const year = today.getFullYear()
     const firstDayOfMonth = new Date(year, month - 1, 1).getDay()
     const daysInMonth = new Date(year, month, 0).getDate()
     const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1)
     const paddedArray = [...Array(firstDayOfMonth).fill(null), ...daysArray]
-    const events = vocaloidBirthdays[month] || []
+    const events = birthdayByMonth[month] || []
 
     return (
       <div className="space-y-4">
@@ -64,10 +98,7 @@ export default function BirthdayCalendar() {
                         <div>{day}</div>
                         {hasEvents && (
                           <>
-                            {/* Mobile: chỉ hiện icon */}
                             <Cake className="mt-1 text-primary block md:hidden" size={16} />
-
-                            {/* Desktop: hiện tên + số lượng */}
                             <div className="hidden md:block text-xs mt-1 text-primary text-center">
                               {dayEvents.names[0]}
                               {dayEvents.names.length > 1 && (
@@ -78,7 +109,6 @@ export default function BirthdayCalendar() {
                             </div>
                           </>
                         )}
-
                       </>
                     )}
                   </div>
@@ -107,21 +137,22 @@ export default function BirthdayCalendar() {
     )
   }
 
-  const allEvents = Object.entries(vocaloidBirthdays)
-    .flatMap(([month, events]) =>
-      events.flatMap((e) =>
-        e.names.map((name) => ({
-          day: e.day,
-          name,
-          month: Number(month),
-        }))
-      )
-    )
-    .sort((a, b) => a.name.localeCompare(b.name))
+  const allEvents = birthdays.map((b) => {
+    const date = new Date(b.date)
+    return {
+      day: date.getDate(),
+      month: date.getMonth() + 1,
+      name: b.character,
+    }
+  }).sort((a, b) => a.name.localeCompare(b.name))
 
   const filteredEvents = allEvents.filter(e =>
     e.name.toLowerCase().includes(search.toLowerCase())
   )
+
+  if (loading) {
+    return <p className="text-center text-sm text-muted-foreground">Đang tải dữ liệu...</p>
+  }
 
   return (
     <CuteTabs
