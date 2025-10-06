@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { Mic2, Music2, Palette, Panda, Sparkles, SunMedium, User } from 'lucide-react'
+import { Mic2, Music2, Palette, Panda, Sparkles, SunMedium } from 'lucide-react'
 
 export default function WikiCredit() {
   return (
@@ -142,48 +142,45 @@ export default function WikiCredit() {
               <li>Ý tưởng: jidousha</li>
               <li>Thiết kế: jidousha</li>
               <li>Minh hoạ chính: <i>coming soon...</i></li>
-              <li>Minh hoạ bản thiết kế:jidousha & Duy Anh</li>
+              <li>Minh hoạ bản thiết kế: jidousha & Duy Anh</li>
             </ul>
 
             <div className="pt-2">
               <div className="font-semibold underline underline-offset-4 decoration-primary mb-1 flex items-center gap-1">
                 <Music2 className="w-4 h-4 text-yellow-600" />
                 <p>Kairiki Bear</p>
-                <p>Các bài hát:</p>
               </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 pl-2 list-none space-y-1">
-                {[
-                  'Venom', 
-                  'Kokoro Nonsense', 
-                  'Hitosama Allergy',
-                  'Seidenki Ningen',
-                  'Shippaisaku Shoujo',
-                  'Darling Dance',
-                  'Bug',
-                  'Down Timer',
-                  'Barbara Kokoro',
-                  'Minus Label',
-                  'Mane Mane Psychotropic'
-                ].map((item, idx) => (
-                  <li key={idx}>・{item}</li>
-                ))}
-              </ul>
+              <div className="pl-5 flex flex-col gap-2"> {/* 👈 thêm padding-left để thụt vào ngang chữ */}
+                <p><b>Các bài hát:</b></p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 pl-2 list-none space-y-1">
+                  {[
+                    'Venom', 
+                    'Kokoro Nonsense', 
+                    'Hitosama Allergy',
+                    'Seidenki Ningen',
+                    'Shippaisaku Shoujo',
+                    'Darling Dance',
+                    'Bug',
+                    'Down Timer',
+                    'Barabara Kokoro',
+                    'Minus Label',
+                    'Mane Mane Psychotropic'
+                  ].map((item, idx) => (
+                    <li key={idx}>・{item}</li>
+                  ))}
+                </ul>
+                <p><b>Các nhân vật:</b></p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 pl-2 list-none space-y-1">
+                  {[
+                    'Aia', 
+                    'Luruca (nhân vật trong game #Compass)'
+                  ].map((item, idx) => (
+                    <li key={idx}>・{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="pt-2">
-              <div className="font-semibold underline underline-offset-4 decoration-primary mb-1 flex items-center gap-1">
-                <User className="w-4 h-4 text-pink-500" />
-                Các nhân vật:
-              </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 pl-2 list-none space-y-1">
-                {[
-                  'Aia', 
-                  'Luruca (nhân vật trong game #Compass)'
-                ].map((item, idx) => (
-                  <li key={idx}>・{item}</li>
-                ))}
-              </ul>
-            </div>
 
             <div className="pt-2">
               <div className="font-semibold underline underline-offset-4 decoration-primary mb-1 flex items-center gap-1">
