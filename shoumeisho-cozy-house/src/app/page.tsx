@@ -8,7 +8,6 @@ import {
   Home as HomeIcon,
   Library,
   MessageCircle,
-  Puzzle,
   Sparkles,
   Users,
   Youtube
@@ -97,7 +96,7 @@ export default function HomePage() {
           </Button>
         </CuteCard>
 
-        <CuteCard icon={<Puzzle size={28} />} title="Làm quiz về Vocaloid">
+        {/* <CuteCard icon={<Puzzle size={28} />} title="Làm quiz về Vocaloid">
           <p className="mb-2">Bạn thuộc dạng fan Vocaloid nào? Khám phá ngay!</p>
           <Button
             variant="outline"
@@ -111,7 +110,7 @@ export default function HomePage() {
           >
             Làm Quiz →
           </Button>
-        </CuteCard>
+        </CuteCard> */}
 
         <CuteCard icon={<Calendar size={28} />} title="Lịch sinh nhật của Vocal Synth">
           <p className="mb-2">Ăn mừng sinh nhật của Vocal Synth mà bạn yêu thích ngay thôi nào!</p>
