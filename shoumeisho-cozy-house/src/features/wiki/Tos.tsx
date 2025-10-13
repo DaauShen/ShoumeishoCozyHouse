@@ -85,7 +85,50 @@ export default function WikiCredit() {
             English
           </AccordionTrigger>
           <AccordionContent className="text-sm text-muted-foreground space-y-4">
+          <div>
+              <p className="text-lg font-bold">About the character:</p>
+              <p>
+              The “character” in this context shall include all graphics, designs and the character’s name “Shoumeisho Miku” used in all products.
+              </p>
+              <p className="mt-2 font-semibold">These actions below are valid without any permissions:</p>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>
+                Using the character Shoumeisho Miku for non-commercial purposes, e.g. creating fanworks or derivatives: fanarts, cosplaying performances, 3D models, fanfictions, etc. which do not violate any laws or moralities.
+                </li>
+              </ul>
+
+              <p className="mt-2 font-semibold">These actions below are possibly valid, however one shall contact to the creators for permissions before:</p>
+              <p className="italic">
+              Contact through the boxchat of “Chừng nào Vocaloid có CCCD thì xóa blog” page.
+              </p>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>
+                Using the character Shoumeisho Miku for commercial purposes under any circumstances.
+                </li>
+              </ul>
+
+              <p className="mt-2 font-semibold">These actions below are completely prohibited:</p>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>
+                Using the character Shoumeisho Miku for illegal and immoral doings.
+                </li>
+                <li>
+                Humiliating the character Shoumeisho Miku, or indirectly humiliating “Chừng nào Vocaloid có CCCD thì xóa blog” page using the character Shoumeisho Miku.
+                </li>
+              </ul>
+            </div>
+
             <div>
+              <p className="text-lg font-bold">About the product:</p>
+              <p>
+              The “product” in this context shall mean the UTAU voicebank of Shoumeisho Miku.
+              </p>
+              <p className="mt-2 font-semibold">These actions below are valid without any permissions:</p>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>
+                Using the product Shoumeisho Miku for non-commercial purposes which do not violate any laws or moralities.
+                </li>
+              </ul>
             </div>
           </AccordionContent>
         </AccordionItem>
