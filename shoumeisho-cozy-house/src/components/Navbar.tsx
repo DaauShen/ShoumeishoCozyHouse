@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { Book, Calendar, Home, Library } from 'lucide-react'
+import { Book, Calendar, Home } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -12,7 +12,7 @@ export default function Navbar() {
     { href: '/', icon: <Home size={24} />, label: 'Trang chủ' },
     { href: '/wiki', icon: <Book size={24} />, label: 'Wiki' },
     { href: '/birthday', icon: <Calendar size={24} />, label: 'Sinh nhật' },
-    { href: '/truyen', icon: <Library size={24} />, label: 'Truyện' },
+    // { href: '/truyen', icon: <Library size={24} />, label: 'Truyện' },
   ]
 
   const hideNavbar = pathname.match(/^\/truyen\/[^/]+\/read\/[^/]+$/)

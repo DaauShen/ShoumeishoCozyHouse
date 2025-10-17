@@ -6,7 +6,6 @@ import {
   Calendar,
   Facebook,
   Home as HomeIcon,
-  Library,
   MessageCircle,
   Sparkles,
   Users,
@@ -85,7 +84,7 @@ export default function HomePage() {
           </Button>
         </CuteCard>
 
-        <CuteCard icon={<Library size={28} />} title="Đọc manga và light novel">
+        {/* <CuteCard icon={<Library size={28} />} title="Đọc manga và light novel">
           <p className="mb-2">Nơi đọc những bộ manga/light novel mà bọn tớ dịch hoặc tự sáng tác.</p>
           <Button
             variant="outline"
@@ -94,7 +93,7 @@ export default function HomePage() {
           >
             Đọc ngay →
           </Button>
-        </CuteCard>
+        </CuteCard> */}
 
         {/* <CuteCard icon={<Puzzle size={28} />} title="Làm quiz về Vocaloid">
           <p className="mb-2">Bạn thuộc dạng fan Vocaloid nào? Khám phá ngay!</p>
