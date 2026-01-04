@@ -31,10 +31,11 @@ export default function WikiCredit() {
           </AccordionTrigger>
           <AccordionContent className="text-sm text-muted-foreground space-y-4">
             <ul className="list-disc pl-4 space-y-1">
-              <li>Ý tưởng: jidousha, alice</li>
-              <li>Thiết kế: alice, jidousha, yix, yze, chest</li>
-              <li>Minh hoạ chính: yix</li>
-              <li>Minh hoạ bản thiết kế: An Orange</li>
+              {/* <li>Ý tưởng: jidousha, alice</li>
+              <li>Thiết kế: alice, jidousha, yix, yze, chest</li> */}
+              <li>Minh hoạ chính: Tiêu Tiêu</li>
+              <li>Minh họa chibi chính: <i>Updating...</i></li>
+              <li>Minh hoạ bản thiết kế: yix</li>
             </ul>
 
             <div className="pt-2">
@@ -106,7 +107,7 @@ export default function WikiCredit() {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 pl-2 list-none space-y-1">
                 {[
                   'Hatsune Miku', 'Kagamine Rin', 'Otomachi Una', 'Macne Nana', 'Yuezheng Ling (V3)',
-                  'YANHE (V3, V4)', 'SeeU', 'ROSA (CeVIO AI)', 'Koharu Rikka', 'SF-A2 miki',
+                  'YANHE (V3)', 'SeeU', 'ROSA (CeVIO AI)', 'Koharu Rikka', 'SF-A2 miki',
                   'Rana', 'Synthesizer V',
                 ].map((item, idx) => (
                   <li key={idx}>・{item}</li>
