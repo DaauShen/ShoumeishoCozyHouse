@@ -34,7 +34,7 @@ export default function WikiCredit() {
               {/* <li>Ý tưởng: jidousha, alice</li>
               <li>Thiết kế: alice, jidousha, yix, yze, chest</li> */}
               <li>Minh hoạ chính: Tiêu Tiêu</li>
-              <li>Minh họa chibi chính: <i>Updating...</i></li>
+              <li>Minh họa chibi chính: <i>Coming soon...</i></li>
               <li>Minh hoạ bản thiết kế: yix</li>
             </ul>
 

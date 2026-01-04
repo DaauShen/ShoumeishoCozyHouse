@@ -26,7 +26,7 @@ export default function WikiInfo() {
     // },
     {
       url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1767524638/KoBG_ypctjo.png',
-      caption: 'Thiết kế thường',
+      caption: 'Minh họa chính',
     },
   ]
   
