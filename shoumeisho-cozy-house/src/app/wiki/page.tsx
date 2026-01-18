@@ -54,7 +54,7 @@ export default function WikiPage() {
             content: <WikiGallery />,
             },
             {
-            label: 'Credit',
+            label: 'Thông tin phiên bản',
             value: 'credit',
             content: <WikiCredit />,
             },
