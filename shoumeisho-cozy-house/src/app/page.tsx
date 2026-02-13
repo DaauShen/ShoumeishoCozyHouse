@@ -4,14 +4,12 @@ import {
   Book,
   Cake,
   Calendar,
-  Facebook,
   Home as HomeIcon,
-  MessageCircle,
   Sparkles,
-  Users,
-  Youtube
+  Users
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { FaBilibili, FaDiscord, FaEnvelope, FaFacebook, FaYoutube } from 'react-icons/fa6'
 
 import CommunityLinkCard from '@/components/CommunityLinkCard'
 import CuteCard from '@/components/CuteCard'
@@ -52,35 +50,33 @@ export default function HomePage() {
           <span className="text-[#80C6EA] font-bold">Shoumeisho Cozy House</span>!
         </p>
         <p className="mt-2">
-          Đây là căn nhà ấm cúng của page
-          <strong> "Chừng nào Vocaloid có CCCD thì xóa blog"</strong>. Tại đây bạn có thể
-          tìm hiểu về <strong>Shoumeisho Miku - fanloid đại diện cho blog -</strong> và những câu chuyện thú vị xoay quanh các Vocal Synth khác. Hãy kéo xuống dưới để cùng khám phá nhé :3
+          Đây là trang web chính thức của trang Facebook <strong>"Chừng nào Vocaloid có CCCD thì xoá blog"</strong>.
         </p>
       </CuteCard>
 
       {todayBirthdays.length > 0 && (
-      <CuteCard
-        icon={<Cake className="text-pink-500 animate-bounce" />}
-        title="Hôm nay là sinh nhật của:"
-        titleLang="vi"
-        className="max-w-xl w-full border-pink-300 bg-pink-50 text-pink-700"
-      >
+        <CuteCard
+          icon={<Cake className="text-pink-500 animate-bounce" />}
+          title="Hôm nay là sinh nhật của:"
+          titleLang="vi"
+          className="max-w-xl w-full border-pink-300 bg-pink-50 text-pink-700"
+        >
           {todayBirthdays.map((bd, idx) => (
             <p className="mt-1" key={idx}><strong>{bd.character}</strong></p>
           ))}
-      </CuteCard>
-    )}
+        </CuteCard>
+      )}
 
       {/* Điều hướng / tính năng */}
       <div className="grid md:grid-cols-2 gap-6 w-full max-w-3xl">
         <CuteCard icon={<Book size={28} />} title="Shoumeisho Miku Wiki">
-          <p className="mb-2">Tìm hiểu về Shoumeisho Miku thông qua wiki của bọn tớ.</p>
+          <p className="mb-2">Tất tần tật về vocal synth của blog.</p>
           <Button
             variant="outline"
             className="rounded-full text-primary border-primary"
             onClick={() => router.push('/wiki')}
           >
-            Đi đến Wiki →
+            Đi đến Wiki
           </Button>
         </CuteCard>
 
@@ -111,14 +107,14 @@ export default function HomePage() {
           </Button>
         </CuteCard> */}
 
-        <CuteCard icon={<Calendar size={28} />} title="Lịch sinh nhật của Vocal Synth">
-          <p className="mb-2">Ăn mừng sinh nhật của Vocal Synth mà bạn yêu thích ngay thôi nào!</p>
+        <CuteCard icon={<Calendar size={28} />} title="Lịch sinh nhật của vocal synth">
+          <p className="mb-2">Tổng hợp sinh nhật/ngày kỉ niệm của nhiều vocal synth khác nhau</p>
           <Button
             variant="outline"
             className="rounded-full text-primary border-primary"
-            onClick={() => router.push('/birthday') }
+            onClick={() => router.push('/birthday')}
           >
-            Xem lịch nào →
+            Tới lịch
           </Button>
         </CuteCard>
       </div>
@@ -132,25 +128,39 @@ export default function HomePage() {
 
           <div className="space-y-3">
             <CommunityLinkCard
-              icon={<MessageCircle size={20} />}
-              name="CCCD Fancord"
-              description="Discord trò chuyện chính thức của CCCD!"
+              icon={<FaDiscord size={20} />}
+              name="[CCCD Fancord] Chúng tôi chơi máy hát thay vì chơi đá"
+              description="Máy chủ chính thức của blog CCCD"
               href="https://discord.gg/UHavNWc8g3"
               color="#7289da"
             />
             <CommunityLinkCard
-              icon={<Facebook size={20} />}
-              name="CCCD Blog"
-              description="Nơi đăng tải những thông tin hữu ích (hoặc không) về máy hát."
+              icon={<FaFacebook size={20} />}
+              name="Chừng nào Vocaloid có CCCD thì xoá blog"
+              description="Trang Facebook chính thức"
               href="https://facebook.com/shoumeisho.wa.itsu.aru.no"
               color="#4267B2"
             />
             <CommunityLinkCard
-              icon={<Youtube size={20} />}
+              icon={<FaYoutube size={20} />}
               name="KyoumeiDOU. -5724-"
-              description="Xem vietsub bài hát Vocaloid yêu thích của bạn ngay thôi!"
+              description="Chi nhánh của CCCD, nơi đăng tải các video Vietsub nhạc Vocaloid cùng những video chính thức của Shoumeisho Miku"
               href="https://youtube.com/@kyoumeidou.5724"
               color="#CD201F"
+            />
+            <CommunityLinkCard
+              icon={<FaBilibili size={20} />}
+              name="hcrrr_"
+              description="Kênh Bilibili chính thức của blog CCCD, nơi đăng tải các video chính thức của Shoumeisho Miku"
+              href="https://b23.tv/jJQT7GA"
+              color="#23ADE5"
+            />
+            <CommunityLinkCard
+              icon={<FaEnvelope size={20} />}
+              name="Email"
+              description="cccdvocaloid@gmail.com"
+              href="mailto:[cccdvocaloid@gmail.com]"
+              color="#c71610"
             />
           </div>
         </CuteCard>

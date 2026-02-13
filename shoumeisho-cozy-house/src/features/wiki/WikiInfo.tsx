@@ -29,7 +29,7 @@ export default function WikiInfo() {
       caption: 'Minh họa chính',
     },
   ]
-  
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const currentImage = images[currentIndex]
 
@@ -60,6 +60,12 @@ export default function WikiInfo() {
           </li>
           <li><strong>• Loại:</strong> Fanloid, UTAU</li>
           <li><strong>• Người cung cấp giọng:</strong> chest</li>
+          <li>
+            <strong>• Ngày phát hành:</strong>
+            <ul className="pl-6 mt-1 space-y-1 text-sm">
+              <li className="flex items-start"><span className="mr-2 text-primary">+</span>UTAU CV: 23.01.2026</li>
+            </ul>
+          </li>
           <li>
             <strong>• Tuổi:</strong>
             <ul className="pl-6 mt-1 space-y-1 text-sm">
@@ -110,7 +116,7 @@ export default function WikiInfo() {
                 <sup className="ml-1 cursor-pointer text-xs text-muted-foreground">[3]</sup>
               </PopoverTrigger>
               <PopoverContent className="text-sm text-center max-w-xs rounded-xl border-primary">
-              Một sinh vật có hình dạng chú cua, úp lên trên người mình chiếc xô đầy những sợi mì nhiều màu. Có mùi cacao.
+                Một sinh vật có hình dạng chú cua, úp lên trên người mình chiếc xô đầy những sợi mì nhiều màu. Có mùi cacao.
               </PopoverContent>
             </Popover>
           </li>
@@ -132,67 +138,67 @@ export default function WikiInfo() {
 
         {/* Cột phải */}
         <div className="space-y-4 text-sm text-muted-foreground text-justify">
-            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-              <DialogTrigger asChild>
-                <div className="w-full max-w-xs mx-auto overflow-hidden cursor-zoom-in">
-                  <div className="flex justify-center gap-4 text-sm font-semibold mt-2">
-                    {images.map((img, idx) => (
-                      <button
-                        key={idx}
-                        onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx) }}
-                        className={cn(
-                          'pb-1',
-                          currentIndex === idx
-                            ? 'border-b-2 border-[#80C6EA] text-[#80C6EA]'
-                            : 'text-gray-500'
-                        )}
-                      >
-                        {img.caption}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="relative w-full aspect-[3/4] bg-white mt-2">
-                    <Image
-                      src={currentImage.url}
-                      alt={currentImage.caption}
-                      fill
-                      className="object-contain p-4"
-                    />
-                  </div>
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <DialogTrigger asChild>
+              <div className="w-full max-w-xs mx-auto overflow-hidden cursor-zoom-in">
+                <div className="flex justify-center gap-4 text-sm font-semibold mt-2">
+                  {images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx) }}
+                      className={cn(
+                        'pb-1',
+                        currentIndex === idx
+                          ? 'border-b-2 border-[#80C6EA] text-[#80C6EA]'
+                          : 'text-gray-500'
+                      )}
+                    >
+                      {img.caption}
+                    </button>
+                  ))}
                 </div>
-              </DialogTrigger>
 
-              <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
-                <DialogTitle />
-                <div className="flex justify-center items-center w-full">
+                <div className="relative w-full aspect-[3/4] bg-white mt-2">
                   <Image
                     src={currentImage.url}
                     alt={currentImage.caption}
-                    width={1080}
-                    height={1080}
-                    className="object-contain max-h-[90vh]"
-                    unoptimized
+                    fill
+                    className="object-contain p-4"
                   />
                 </div>
-              </DialogContent>
-            </Dialog>
+              </div>
+            </DialogTrigger>
+
+            <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none [&>button]:hidden">
+              <DialogTitle />
+              <div className="flex justify-center items-center w-full">
+                <Image
+                  src={currentImage.url}
+                  alt={currentImage.caption}
+                  width={1080}
+                  height={1080}
+                  className="object-contain max-h-[90vh]"
+                  unoptimized
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <p className="font-medium">
-          ShouMiku là biểu tượng được hình thành nên từ vô vàn cảm xúc, là sự kết hợp hài hoà giữa những mảnh ghép trong cộng đồng VocalSynth. Nhiệm vụ của ShouMiku là lan toả âm nhạc của cốt lõi, của tâm hồn đến với thế giới và bảo vệ cộng đồng VocalSynth khỏi những kẻ xấu với ý định cung cấp CCCD cho từng VocalSynth.
+            ShouMiku là biểu tượng được hình thành nên từ vô vàn cảm xúc, là sự kết hợp hài hoà giữa những mảnh ghép trong cộng đồng VocalSynth. Nhiệm vụ của ShouMiku là lan toả âm nhạc của cốt lõi, của tâm hồn đến với thế giới và bảo vệ cộng đồng VocalSynth khỏi những kẻ xấu với ý định cung cấp CCCD cho từng VocalSynth.
           </p>
 
           <p className="font-medium">
-          ShouMiku không phải Hatsune Miku, và sẽ chẳng bao giờ là Hatsune Miku, hay bất cứ biến thể nào của Hatsune Miku
-              <Popover>
-                <PopoverTrigger asChild>
-                  <sup className="ml-1 cursor-pointer text-xs text-muted-foreground">[4]</sup>
-                </PopoverTrigger>
-                <PopoverContent className="max-w-xs text-sm text-center">
-                  Các biến thể của Hatsune Miku có thể kể đến như: Snow Miku, Sakura Miku, Hachune Miku, Mikudayo,…
-                </PopoverContent>
-              </Popover>
-              . ShouMiku chỉ là ShouMiku, một nhân vật fanmade của blog, được xây dựng và thiết kế dựa trên Miku và nhiều VocalSynth, VocaloP khác nhau. Mong mọi người sẽ không hiểu sai điều này.
+            ShouMiku không phải Hatsune Miku, và sẽ chẳng bao giờ là Hatsune Miku, hay bất cứ biến thể nào của Hatsune Miku
+            <Popover>
+              <PopoverTrigger asChild>
+                <sup className="ml-1 cursor-pointer text-xs text-muted-foreground">[4]</sup>
+              </PopoverTrigger>
+              <PopoverContent className="max-w-xs text-sm text-center">
+                Các biến thể của Hatsune Miku có thể kể đến như: Snow Miku, Sakura Miku, Hachune Miku, Mikudayo,…
+              </PopoverContent>
+            </Popover>
+            . ShouMiku chỉ là ShouMiku, một nhân vật fanmade của blog, được xây dựng và thiết kế dựa trên Miku và nhiều VocalSynth, VocaloP khác nhau. Mong mọi người sẽ không hiểu sai điều này.
           </p>
 
           <h2 className="text-xl font-bold text-center mt-6">– Trivia –</h2>

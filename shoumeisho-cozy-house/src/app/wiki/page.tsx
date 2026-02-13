@@ -8,6 +8,7 @@ import { Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
 import Tos from '@/features/wiki/Tos'
+import Voicebank from '@/features/wiki/Voicebank'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,15 +20,15 @@ export const metadata: Metadata = {
 export default function WikiPage() {
   return (
     <div className="max-w-3xl mx-auto py-10 space-y-6 px-4 font-vi">
-        <div className="flex justify-center">
-          <Image
-            src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1767524925/newlogo_zekwiz.png"
-            alt="Shoumeisho Miku"
-            width={280}
-            height={280}
-            className="rounded-full object-cover w-[180px] sm:w-[220px] md:w-[260px] border-[4px] border-primary shadow-lg"
-          />
-        </div>
+      <div className="flex justify-center">
+        <Image
+          src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1767524925/newlogo_zekwiz.png"
+          alt="Shoumeisho Miku"
+          width={280}
+          height={280}
+          className="rounded-full object-cover w-[180px] sm:w-[220px] md:w-[260px] border-[4px] border-primary shadow-lg"
+        />
+      </div>
 
       <h1 className="text-3xl text-center font-bold text-primary flex items-center justify-center gap-2">
         <Sparkles className="text-pink-400 animate-wiggle" size={24} />
@@ -36,35 +37,40 @@ export default function WikiPage() {
       </h1>
 
       <p className="text-center text-muted-foreground text-sm max-w-xl mx-auto">
-        Shoumeisho Miku, hay còn gọi là <strong>ShouMiku</strong>, là một fanloid đại diện cho blog “Chừng nào Vocaloid có CCCD thì xoá blog”.
+        Shoumeisho Miku (gọi tắt là <strong>ShouMiku</strong>) là một fanloid kiêm UTAUloid đại diện cho blog “Chừng nào Vocaloid có CCCD thì xoá blog”.
       </p>
 
       {/* Tabs kawaii */}
       <CuteTabs
         defaultValue="info"
         tabs={[
-            {
+          {
             label: 'Thông tin',
             value: 'info',
             content: <WikiInfo />,
-            },
-            {
+          },
+          {
             label: 'Hình ảnh',
             value: 'gallery',
             content: <WikiGallery />,
-            },
-            {
+          },
+          {
             label: 'Thông tin phiên bản',
             value: 'credit',
             content: <WikiCredit />,
-            },
-            {
+          },
+          {
             label: 'Điều khoản sử dụng',
             value: 'tos',
-            content: <Tos/>
-            }
+            content: <Tos />
+          },
+          {
+            label: 'Voicebank',
+            value: 'voicebank',
+            content: <Voicebank />
+          }
         ]}
-        />
+      />
     </div>
   )
 }
