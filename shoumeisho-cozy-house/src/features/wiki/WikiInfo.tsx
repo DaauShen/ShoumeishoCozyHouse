@@ -25,7 +25,7 @@ export default function WikiInfo() {
     //   caption: 'Thiết kế hè',
     // },
     {
-      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1767524638/KoBG_ypctjo.png',
+      url: 'https://res.cloudinary.com/dr3iqzocx/image/upload/v1781234484/x%C3%B4_myuuy4.png',
       caption: 'Minh họa chính',
     },
   ]
