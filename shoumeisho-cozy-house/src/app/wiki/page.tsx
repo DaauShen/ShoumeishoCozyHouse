@@ -1,28 +1,27 @@
-import CuteTabs from '@/components/CuteTabs'
+import CuteTabs from "@/components/CuteTabs";
 
-import WikiCredit from '@/features/wiki/WikiCredit'
-import WikiGallery from '@/features/wiki/WikiGallery'
-import WikiInfo from '@/features/wiki/WikiInfo'
+import WikiCredit from "@/features/wiki/WikiCredit";
+import WikiGallery from "@/features/wiki/WikiGallery";
+import WikiInfo from "@/features/wiki/WikiInfo";
 
-import { Sparkles } from 'lucide-react'
-import Image from 'next/image'
+import { Sparkles } from "lucide-react";
+import Image from "next/image";
 
-import Tos from '@/features/wiki/Tos'
-import Voicebank from '@/features/wiki/Voicebank'
-import { Metadata } from 'next'
+import Tos from "@/features/wiki/Tos";
+import Voicebank from "@/features/wiki/Voicebank";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Shoumeisho Miku - Wiki',
-  description: 'Tìm hiểu về Shoumeisho Miku',
-}
-
+  title: "Shoumeisho Miku - Wiki",
+  description: "Tìm hiểu về Shoumeisho Miku",
+};
 
 export default function WikiPage() {
   return (
     <div className="max-w-3xl mx-auto py-10 space-y-6 px-4 font-vi">
       <div className="flex justify-center">
         <Image
-          src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1767524925/newlogo_zekwiz.png"
+          src="https://res.cloudinary.com/dr3iqzocx/image/upload/v1781230356/x%C3%B4_icon_wuydnz.png"
           alt="Shoumeisho Miku"
           width={280}
           height={280}
@@ -37,7 +36,9 @@ export default function WikiPage() {
       </h1>
 
       <p className="text-center text-muted-foreground text-sm max-w-xl mx-auto">
-        Shoumeisho Miku (gọi tắt là <strong>ShouMiku</strong>) là một fanloid kiêm UTAUloid đại diện cho blog “Chừng nào Vocaloid có CCCD thì xoá blog”.
+        Shoumeisho Miku (gọi tắt là <strong>ShouMiku</strong>) là một fanloid
+        kiêm UTAUloid đại diện cho blog “Chừng nào Vocaloid có CCCD thì xoá
+        blog”.
       </p>
 
       {/* Tabs kawaii */}
@@ -45,32 +46,32 @@ export default function WikiPage() {
         defaultValue="info"
         tabs={[
           {
-            label: 'Thông tin',
-            value: 'info',
+            label: "Thông tin",
+            value: "info",
             content: <WikiInfo />,
           },
           {
-            label: 'Hình ảnh',
-            value: 'gallery',
+            label: "Hình ảnh",
+            value: "gallery",
             content: <WikiGallery />,
           },
           {
-            label: 'Thông tin phiên bản',
-            value: 'credit',
+            label: "Thông tin phiên bản",
+            value: "credit",
             content: <WikiCredit />,
           },
           {
-            label: 'Điều khoản sử dụng',
-            value: 'tos',
-            content: <Tos />
+            label: "Điều khoản sử dụng",
+            value: "tos",
+            content: <Tos />,
           },
           {
-            label: 'Voicebank',
-            value: 'voicebank',
-            content: <Voicebank />
-          }
+            label: "Voicebank",
+            value: "voicebank",
+            content: <Voicebank />,
+          },
         ]}
       />
     </div>
-  )
+  );
 }

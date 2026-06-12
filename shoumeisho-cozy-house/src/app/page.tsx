@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Book,
@@ -6,25 +6,31 @@ import {
   Calendar,
   Home as HomeIcon,
   Sparkles,
-  Users
-} from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { FaBilibili, FaDiscord, FaEnvelope, FaFacebook, FaYoutube } from 'react-icons/fa6'
+  Users,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import {
+  FaBilibili,
+  FaDiscord,
+  FaEnvelope,
+  FaFacebook,
+  FaYoutube,
+} from "react-icons/fa6";
 
-import CommunityLinkCard from '@/components/CommunityLinkCard'
-import CuteCard from '@/components/CuteCard'
-import { Button } from '@/components/ui/button'
+import CommunityLinkCard from "@/components/CommunityLinkCard";
+import CuteCard from "@/components/CuteCard";
+import { Button } from "@/components/ui/button";
 
-import { Birthday, getTodayBirthday } from '@/lib/sanityQueries'
-import { useEffect, useState } from 'react'
+import { Birthday, getTodayBirthday } from "@/lib/sanityQueries";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const router = useRouter()
+  const router = useRouter();
   const [todayBirthdays, setTodayBirthdays] = useState<Birthday[]>([]);
 
   useEffect(() => {
     getTodayBirthday().then((data) => setTodayBirthdays(data));
-  })
+  });
 
   return (
     <div className="flex flex-col items-center space-y-16 mt-10 px-4 pb-[120px]">
@@ -46,11 +52,15 @@ export default function HomePage() {
         className="max-w-xl w-full"
       >
         <p>
-          Chào mừng bạn đến với{' '}
-          <span className="text-[#80C6EA] font-bold">Shoumeisho Cozy House</span>!
+          Chào mừng bạn đến với{" "}
+          <span className="text-[#80C6EA] font-bold">
+            Shoumeisho Cozy House
+          </span>
+          !
         </p>
         <p className="mt-2">
-          Đây là trang web chính thức của trang Facebook <strong>"Chừng nào Vocaloid có CCCD thì xoá blog"</strong>.
+          Đây là trang web chính thức của trang Facebook{" "}
+          <strong>"Chừng nào Vocaloid có CCCD thì xoá blog"</strong>.
         </p>
       </CuteCard>
 
@@ -62,7 +72,9 @@ export default function HomePage() {
           className="max-w-xl w-full border-pink-300 bg-pink-50 text-pink-700"
         >
           {todayBirthdays.map((bd, idx) => (
-            <p className="mt-1" key={idx}><strong>{bd.character}</strong></p>
+            <p className="mt-1" key={idx}>
+              <strong>{bd.character}</strong>
+            </p>
           ))}
         </CuteCard>
       )}
@@ -74,7 +86,7 @@ export default function HomePage() {
           <Button
             variant="outline"
             className="rounded-full text-primary border-primary"
-            onClick={() => router.push('/wiki')}
+            onClick={() => router.push("/wiki")}
           >
             Đi đến Wiki
           </Button>
@@ -107,12 +119,17 @@ export default function HomePage() {
           </Button>
         </CuteCard> */}
 
-        <CuteCard icon={<Calendar size={28} />} title="Lịch sinh nhật của vocal synth">
-          <p className="mb-2">Tổng hợp sinh nhật/ngày kỉ niệm của nhiều vocal synth khác nhau</p>
+        <CuteCard
+          icon={<Calendar size={28} />}
+          title="Lịch sinh nhật của vocal synth"
+        >
+          <p className="mb-2">
+            Tổng hợp sinh nhật/ngày kỉ niệm của nhiều vocal synth khác nhau
+          </p>
           <Button
             variant="outline"
             className="rounded-full text-primary border-primary"
-            onClick={() => router.push('/birthday')}
+            onClick={() => router.push("/birthday")}
           >
             Tới lịch
           </Button>
@@ -123,7 +140,8 @@ export default function HomePage() {
       <div className="max-w-xl w-full space-y-4">
         <CuteCard icon={<Users size={32} />} title="Kết nối cộng đồng">
           <p className="mb-4 text-sm text-gray-700 font-vi">
-            Cùng nhau chia sẻ niềm vui tại các nền tảng mạng xã hội của chúng mình nhé!
+            Cùng nhau chia sẻ niềm vui tại các nền tảng mạng xã hội của chúng
+            mình nhé!
           </p>
 
           <div className="space-y-3">
@@ -131,7 +149,7 @@ export default function HomePage() {
               icon={<FaDiscord size={20} />}
               name="[CCCD Fancord] Chúng tôi chơi máy hát thay vì chơi đá"
               description="Máy chủ chính thức của blog CCCD"
-              href="https://discord.gg/UHavNWc8g3"
+              href="https://discord.gg/VjchEWEV2R"
               color="#7289da"
             />
             <CommunityLinkCard
@@ -166,5 +184,5 @@ export default function HomePage() {
         </CuteCard>
       </div>
     </div>
-  )
+  );
 }
